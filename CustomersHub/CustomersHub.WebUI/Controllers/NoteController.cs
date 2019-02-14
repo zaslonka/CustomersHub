@@ -43,7 +43,7 @@ namespace CustomersHub.WebUI.Controllers
             Note note = context.Find(Id);
             if (note == null)
             {
-                return HttpNotFound();
+                return HttpNotFound($"Note with {Id} not exist in database");
             }
             else
             {
@@ -58,7 +58,7 @@ namespace CustomersHub.WebUI.Controllers
 
             if (noteToEdit == null)
             {
-                return HttpNotFound();
+                return HttpNotFound($"Note with {Id} not exist in database");
             }
             else
             {

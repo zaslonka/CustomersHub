@@ -56,7 +56,7 @@ namespace CustomersHub.WebUI.Controllers
             Customer customer = context.Find(Id);
             if (customer == null)
             {
-                return HttpNotFound();
+                return HttpNotFound($"Customer with {Id} not exist in database");
             }
             else
             {
@@ -75,7 +75,7 @@ namespace CustomersHub.WebUI.Controllers
 
             if (customerToEdit == null)
             {
-                return HttpNotFound();
+                return HttpNotFound($"Customer with {Id} not exist in database");
             }
             else
             {
@@ -102,7 +102,7 @@ namespace CustomersHub.WebUI.Controllers
             var customer = context.Find(id);
 
             if (customer == null)
-                return HttpNotFound();
+                return HttpNotFound($"Customer with {Id} not exist in database");
 
             CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
             viewModel.Customer = customer;
