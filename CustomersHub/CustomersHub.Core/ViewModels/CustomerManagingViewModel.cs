@@ -7,5 +7,7 @@ namespace CustomersHub.Core.ViewModels
     {
         public Customer Customer { get; set; }
         public IEnumerable<CustomerStatus> CustomerStatuses { get; set; }
+
+        public IEnumerable<Note> CustomerNotes { get; set; }
     }
 }

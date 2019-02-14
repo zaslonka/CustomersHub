@@ -29,3 +29,35 @@
 <p>
     @Html.ActionLink("Edit Customer", "Edit", "Customer", new { id = Model.Customer.Id }, new { @class = "btn btn-primary" })
 </p>
+<br />
+<h3>Notes</h3>
+<br />
+<table id="notes" class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model.CustomerNotes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    @Html.ActionLink("Edit", "Edit", "Note", new { id = item.Id }, new { @class = "btn btn-primary" }) 
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+@Html.ActionLink("Add Notes", "Create", "Note", new { customerId = Model.Customer.Id}, new { @class = "btn btn-primary" })

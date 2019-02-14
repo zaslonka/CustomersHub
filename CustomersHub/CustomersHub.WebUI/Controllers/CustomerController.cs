@@ -11,11 +11,13 @@ namespace CustomersHub.WebUI.Controllers
     {
         private readonly IRepository<Customer> context;
         private readonly IRepository<CustomerStatus> customerStatuses;
+        private readonly IRepository<Note> customerNotes;
 
-        public CustomerController(IRepository<Customer> customerContext, IRepository<CustomerStatus> customerStatusContext)
+        public CustomerController(IRepository<Customer> customerContext, IRepository<CustomerStatus> customerStatusContext, IRepository<Note> customerNotesContext)
         {
             context = customerContext;
             customerStatuses = customerStatusContext;
+            customerNotes = customerNotesContext;
         }
 
         public ActionResult Index()
@@ -91,7 +93,7 @@ namespace CustomersHub.WebUI.Controllers
 
                 context.Commit();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customer", new { id = customer.Id });
             }
         }
 
@@ -105,6 +107,7 @@ namespace CustomersHub.WebUI.Controllers
             CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
             viewModel.Customer = customer;
             viewModel.CustomerStatuses = customerStatuses.Collection();
+            viewModel.CustomerNotes = customerNotes.Collection().Where(note => note.CustomerId == id);
 
             return View(viewModel);
         }
