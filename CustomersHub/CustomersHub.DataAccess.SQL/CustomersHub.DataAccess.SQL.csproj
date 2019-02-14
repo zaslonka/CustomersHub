@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201902141107422_Init_Database.Designer.cs">
       <DependentUpon>201902141107422_Init_Database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902141119196_Populate_Customer_Status.cs" />
+    <Compile Include="Migrations\201902141119196_Populate_Customer_Status.Designer.cs">
+      <DependentUpon>201902141119196_Populate_Customer_Status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902141107422_Init_Database.resx">
       <DependentUpon>201902141107422_Init_Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141119196_Populate_Customer_Status.resx">
+      <DependentUpon>201902141119196_Populate_Customer_Status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
