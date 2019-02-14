@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CustomersHub.Core.Contracts;
@@ -20,10 +21,35 @@ namespace CustomersHub.WebUI.Controllers
             customerNotes = customerNotesContext;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string filter)
         {
-            List<Customer> products = context.Collection().ToList();
-            return View(products);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.StatusSortParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "status_asc";
+
+            var customers = context.Collection();
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                customers = customers.Where(s => s.Name.Contains(filter) || s.Status.Contains(filter));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(s => s.Name);
+                    break;
+                case "status_desc":
+                    customers = customers.OrderByDescending(s => s.Status);
+                    break;
+                case "status_asc":
+                    customers = customers.OrderBy(s => s.Status);
+                    break;
+                default:
+                    customers = customers.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(customers.ToList());
         }
 
         public ActionResult Create()
@@ -102,7 +128,7 @@ namespace CustomersHub.WebUI.Controllers
             var customer = context.Find(id);
 
             if (customer == null)
-                return HttpNotFound($"Customer with {Id} not exist in database");
+                return HttpNotFound($"Customer with {id} not exist in database");
 
             CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
             viewModel.Customer = customer;
