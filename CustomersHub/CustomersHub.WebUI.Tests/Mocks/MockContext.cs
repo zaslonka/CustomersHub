@@ -1,32 +1,24 @@
-﻿using System;
+﻿using CustomersHub.Core.Contracts;
+using CustomersHub.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Caching;
-using CustomersHub.Core.Contracts;
-using CustomersHub.Core.Models;
 
-namespace CustomersHub.DataAccess.LocalMemory
+namespace CustomersHub.WebUI.Tests.Mocks
 {
-    public class LocalMemoryRepository<T> : IRepository<T> where T : BaseEntity
+    class MockContext<T> : IRepository<T> where T : BaseEntity
     {
-        ObjectCache cache = MemoryCache.Default;
         List<T> items;
         string className;
 
-        public LocalMemoryRepository()
+        public MockContext()
         {
-            className = typeof(T).Name;
-            items = cache[className] as List<T>;
-
-            if (items == null)
-            {
-                items = new List<T>();
-            }
+            items = new List<T>();
         }
 
         public void Commit()
         {
-            cache[className] = items;
+            return;
         }
 
         public void Insert(T t)
@@ -51,6 +43,6 @@ namespace CustomersHub.DataAccess.LocalMemory
         {
             return items.AsQueryable();
         }
-        
+
     }
 }

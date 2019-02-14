@@ -53,11 +53,11 @@
             </td>
             <td>
                 <div class="btn-group" role="group" aria-label="...">
-                    @Html.ActionLink("Edit", "Edit", "Note", new { id = item.Id }, new { @class = "btn btn-primary" }) 
+                    @Html.ActionLink("Edit", "Edit", "Note", new { id = item.Id }, new { @class = "btn btn-primary" })
                 </div>
             </td>
         </tr>
     }
 </table>
 <br />
-@Html.ActionLink("Add Notes", "Create", "Note", new { customerId = Model.Customer.Id}, new { @class = "btn btn-primary" })
+@Html.ActionLink("Add Notes", "Create", "Note", new { customerId = Model.Customer.Id }, new { @class = "btn btn-primary" })

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomersHub.Core.Contracts;
 using CustomersHub.Core.Models;
 
@@ -38,12 +34,6 @@ namespace CustomersHub.DataAccess.SQL
         public void Insert(T t)
         {
             dbSet.Add(t);
-        }
-
-        public void Update(T t)
-        {
-            dbSet.Attach(t);
-            context.Entry(t).State = EntityState.Modified;
         }
     }
 }

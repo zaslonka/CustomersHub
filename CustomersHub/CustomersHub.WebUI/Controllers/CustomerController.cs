@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CustomersHub.Core.Contracts;
@@ -58,6 +57,7 @@ namespace CustomersHub.WebUI.Controllers
 
             viewModel.Customer = new Customer();
             viewModel.CustomerStatuses = customerStatuses.Collection();
+            viewModel.CustomerNotes = customerNotes.Collection();
             return View(viewModel);
         }
 

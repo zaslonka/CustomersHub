@@ -83,8 +83,9 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CustomerControllerTest.cs" />
+    <Compile Include="Mocks\MockContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -93,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomersHub.Core\CustomersHub.Core.csproj">
+      <Project>{F6EFC40F-5745-4175-AA45-92B644016731}</Project>
+      <Name>CustomersHub.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomersHub.WebUI\CustomersHub.WebUI.csproj">
       <Project>{A04D10F6-6F42-4247-8664-D0EC8C325609}</Project>
       <Name>CustomersHub.WebUI</Name>
