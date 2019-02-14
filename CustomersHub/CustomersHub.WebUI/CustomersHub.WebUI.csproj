@@ -216,6 +216,10 @@
       <Project>{3B056225-E462-4A31-86AD-8991FD1DEEB3}</Project>
       <Name>CustomersHub.DataAccess.LocalMemory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomersHub.DataAccess.SQL\CustomersHub.DataAccess.SQL.csproj">
+      <Project>{16BF581B-1638-4AF5-9B53-9DA1B049878E}</Project>
+      <Name>CustomersHub.DataAccess.SQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

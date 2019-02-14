@@ -1,8 +1,8 @@
 using CustomersHub.Core.Contracts;
 using CustomersHub.Core.Models;
 using System;
-using CustomersHub.DataAccess.LocalMemory;
 using Unity;
+using CustomersHub.DataAccess.SQL;
 
 namespace CustomersHub.WebUI
 {
@@ -43,8 +43,9 @@ namespace CustomersHub.WebUI
             // container.LoadConfiguration();
 
             // TODO: Register your type's mappings here.
-            container.RegisterType<IRepository<Customer>, LocalMemoryRepository<Customer>>();
-            container.RegisterType<IRepository<CustomerStatus>, LocalMemoryRepository<CustomerStatus>>();
+            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
+            container.RegisterType<IRepository<CustomerStatus>, SQLRepository<CustomerStatus>>();
+            container.RegisterType<IRepository<Note>, SQLRepository<Note>>();
         }
     }
 }
