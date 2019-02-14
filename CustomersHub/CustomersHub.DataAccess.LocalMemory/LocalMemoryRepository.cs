@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
+using CustomersHub.Core.Contracts;
 using CustomersHub.Core.Models;
 
 namespace CustomersHub.DataAccess.LocalMemory
 {
-    public class LocalMemoryRepository<T> where T : BaseEntity
+    public class LocalMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;

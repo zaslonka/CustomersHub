@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomersHub.Core.Models
 {
-    class CustomerStatus : BaseEntity
+    public class CustomerStatus : BaseEntity
     {
         public string Status { get; set; }
     }

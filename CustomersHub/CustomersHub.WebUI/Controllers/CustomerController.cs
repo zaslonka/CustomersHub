@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CustomersHub.Core.Contracts;
 using CustomersHub.Core.Models;
 using CustomersHub.DataAccess.LocalMemory;
 
@@ -10,11 +11,13 @@ namespace CustomersHub.WebUI.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly LocalMemoryRepository<Customer> context;
+        private readonly IRepository<Customer> context;
+        private readonly IRepository<CustomerStatus> customerStatuses;
 
-        public CustomerController()
+        public CustomerController(IRepository<Customer> customerContext, IRepository<CustomerStatus> customerStatusContext)
         {
-            context = new LocalMemoryRepository<Customer>();
+            context = customerContext;
+            customerStatuses = customerStatusContext;
         }
 
         public ActionResult Index()
