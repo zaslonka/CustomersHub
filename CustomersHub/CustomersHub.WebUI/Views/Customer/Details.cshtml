@@ -1,0 +1,31 @@
+﻿@model CustomersHub.Core.ViewModels.CustomerManagingViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Customer.Name</h2>
+<ul>
+    <li>@Html.LabelFor(m => m.Customer.Id): @Model.Customer.Id</li>
+    <li>@Html.LabelFor(m => m.Customer.Status): @Model.Customer.Status</li>
+    <li>@Html.LabelFor(m => m.Customer.CreatedAt): @Model.Customer.CreatedAt</li>
+    @if (!Model.Customer.Email.IsEmpty())
+    {
+        <li>@Html.LabelFor(m => m.Customer.Email): @Model.Customer.Email</li>
+    }
+    @if (!Model.Customer.Phone.IsEmpty())
+    {
+        <li>@Html.LabelFor(m => m.Customer.Phone): @Model.Customer.Phone</li>
+    }
+    @if (!Model.Customer.City.IsEmpty())
+    {
+        <li>@Html.LabelFor(m => m.Customer.City): @Model.Customer.City</li>
+    }
+    @if (!Model.Customer.Country.IsEmpty())
+    {
+        <li>@Html.LabelFor(m => m.Customer.Country): @Model.Customer.Country</li>
+    }
+</ul>
+<p>
+    @Html.ActionLink("Edit Customer", "Edit", "Customer", new { id = Model.Customer.Id }, new { @class = "btn btn-primary" })
+</p>

@@ -15,7 +15,7 @@ namespace CustomersHub.Core.Models
         [DisplayName("Customer Name")]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         public string Status { get; set; }
 
         public string City { get; set; }

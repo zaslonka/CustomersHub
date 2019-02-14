@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using CustomersHub.Core.Contracts;
 using CustomersHub.Core.Models;
-using CustomersHub.DataAccess.LocalMemory;
+using CustomersHub.Core.ViewModels;
 
 namespace CustomersHub.WebUI.Controllers
 {
@@ -28,8 +26,11 @@ namespace CustomersHub.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Customer product = new Customer();
-            return View(product);
+            CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
+
+            viewModel.Customer = new Customer();
+            viewModel.CustomerStatuses = customerStatuses.Collection();
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -57,7 +58,11 @@ namespace CustomersHub.WebUI.Controllers
             }
             else
             {
-                return View(customer);
+                CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
+                viewModel.Customer = customer;
+                viewModel.CustomerStatuses = customerStatuses.Collection();
+
+                return View(viewModel);
             }
         }
 
@@ -88,6 +93,20 @@ namespace CustomersHub.WebUI.Controllers
 
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Details(string id)
+        {
+            var customer = context.Find(id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            CustomerManagingViewModel viewModel = new CustomerManagingViewModel();
+            viewModel.Customer = customer;
+            viewModel.CustomerStatuses = customerStatuses.Collection();
+
+            return View(viewModel);
         }
     }
 }
